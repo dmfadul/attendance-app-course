@@ -1,0 +1,133 @@
+/* Global resets and font */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+  }
+  
+  body {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #form-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  #form-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Header */
+  #form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1d3557;
+  }
+  
+  /* Labels and inputs */
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  select, input, button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  select:focus, input:focus {
+    border-color: #457b9d;
+    outline: none;
+    box-shadow: 0 0 4px #a8dadc;
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    background-color: #1d3557;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #457b9d;
+  }
+  
+  /* Status message */
+  #status {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+  
+  /* Success / Error styling will be inline */
+  
+  @media screen and (max-width: 600px) {
+    body, html {
+      flex-direction: column;
+      padding: 1rem;
+      align-items: stretch;
+    }
+  
+    #form-container {
+      max-width: none;
+      width: 100%;
+      padding: 1.5rem;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  
+    #form-title {
+      font-size: 1.75rem;
+    }
+  
+    select, input, button {
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+  
+    #status {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #form-container {
+      padding: 1rem;
+      border-radius: 8px;
+    }
+  
+    #form-title {
+      font-size: 1.2rem;
+    }
+  
+    select, input, button {
+      font-size: 0.95rem;
+      padding: 0.6rem;
+    }
+  }
+  

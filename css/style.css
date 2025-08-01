@@ -1,0 +1,92 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f9fafb;
+    color: #333;
+  }
+  
+  h1, h2 {
+    color: #2c3e50;
+  }
+  
+  /* Form styling */
+  form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    background-color: #4f46e5;
+    color: #ffffff;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #4338ca;
+  }
+  
+  /* Link list styling */
+  ul#generated-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul#generated-links li {
+    margin: 0.5rem 0;
+  }
+  
+  ul#generated-links a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 500;
+  }
+  
+  ul#generated-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    body {
+      margin: 1rem;
+    }
+  
+    form {
+      padding: 1rem;
+    }
+  }
+  
