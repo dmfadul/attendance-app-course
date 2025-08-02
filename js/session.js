@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       localStorage.setItem(key, newData);
 
       // Send to Netlify
-      fetch("https://espcendpoint.netlify.app/.netlify/functions/updateGist", {
+      fetch("https://espcendpoint2.netlify.app/.netlify/functions/updateGist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

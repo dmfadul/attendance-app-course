@@ -45,7 +45,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     // localStorage.setItem(`config-${eventCode}`, JSON.stringify(config, null, 2));
 
     // Send config to Netlify backend
-    fetch("https://espcendpoint.netlify.app/.netlify/functions/updateConfig", {
+    fetch("https://espcendpoint2.netlify.app/.netlify/functions/updateConfig", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
