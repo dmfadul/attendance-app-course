@@ -9,7 +9,7 @@ function getQueryParams() {
 }
 
 async function loadResponses() {
-  const GIST_ID = 'e2c98b8850cffdd04f61d8cbeaa0d04f';
+  const GIST_ID = 'be8732ad8a0fbdd966c3ff00f42a2aeb';
 
   try {
     const res = await fetch(`https://api.github.com/gists/${GIST_ID}`);
@@ -35,7 +35,7 @@ async function loadResponses() {
 }
 
 async function loadParticipants() {
-  const GIST_ID = 'e2c98b8850cffdd04f61d8cbeaa0d04f';
+  const GIST_ID = 'be8732ad8a0fbdd966c3ff00f42a2aeb';
 
   try {
     const res = await fetch(`https://api.github.com/gists/${GIST_ID}`);

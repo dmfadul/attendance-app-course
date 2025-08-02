@@ -28,7 +28,7 @@ function showStatus(message, success = true) {
 }
 
 async function loadConfig(eventCode) {
-  const GIST_ID = 'e2c98b8850cffdd04f61d8cbeaa0d04f';
+  const GIST_ID = 'be8732ad8a0fbdd966c3ff00f42a2aeb';
   const filename = `${eventCode}-config.json`;
   const url = `https://gist.githubusercontent.com/dmfadul/${GIST_ID}/raw/${filename}`;
 
