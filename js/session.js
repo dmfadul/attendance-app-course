@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     showStatus("Configuration not found or failed to load.", false);
     document.getElementById("checkin-form").style.display = "none";
+    console.error("Error loading config:", err);
     return;
   }
 
