@@ -8,16 +8,33 @@ function getQueryParams() {
   };
 }
 
-function populateNamesDropdown(participants_raw) {
-  const select = document.getElementById('name-select');
+function populateClassDropdown(students) {
+  const classSelect = document.getElementById("class-select");
+  const nameSelect = document.getElementById("name-select");
 
-  const participants = [...new Set(participants_raw.filter(p => typeof p === 'string'))].sort();
-
-  participants.forEach(name => {
+  // Populate class dropdown
+  Object.keys(students).sort().forEach(className => {
     const option = document.createElement('option');
-    option.value = name;
-    option.textContent = name;
-    select.appendChild(option);
+    option.value = className;
+    option.textContent = className;
+    classSelect.appendChild(option);
+  });
+
+  classSelect.addEventListener("change", () => {
+    const selectedClass = classSelect.value;
+    const names = students[selectedClass];
+
+    // Clear old name options
+    nameSelect.innerHTML = "";
+    nameSelect.disabled = false;
+
+    // Populate name dropdown
+    names.sort().forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      nameSelect.appendChild(opt);
+    });
   });
 }
 
@@ -65,10 +82,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const config = await loadConfig(event);
     const students = await loadStudents();
     console.log("students:", students);
-    
+
     const eventName = config.eventName;
     title.innerHTML = `${eventName}<br>${dia} - ${turnoDict[turno]}`;
-    populateNamesDropdown(config.participants);
+    populateClassDropdown(students);
   } catch (err) {
     showStatus("Configuration not found or failed to load.", false);
     document.getElementById("checkin-form").style.display = "none";

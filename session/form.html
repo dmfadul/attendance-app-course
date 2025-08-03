@@ -17,6 +17,14 @@
 
             <form id="checkin-form">
               <div class="mb-3">
+                <label for="class-select" class="form-label">Sua Turma:</label>
+                <select id="class-select" class="form-select" required>
+                  <option value="" disabled selected>Escolha a turma</option>
+                  <!-- Populated by JS -->
+                </select>
+              </div>
+              
+              <div class="mb-3">
                 <label for="name-select" class="form-label">Seu Nome:</label>
                 <select id="name-select" class="form-select" required>
                   <!-- Options populated by JS -->
