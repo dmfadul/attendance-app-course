@@ -35,8 +35,8 @@ function renderSessionLinks(config) {
   const numDays = config.numDays;
   const sessionsPerDay = config.sessionsPerDay;
   
-  const baseUrl = window.location.origin + "/attendance-app/session/form.html?event=" + encodeURIComponent(eventCode);
-  const responseUrl = window.location.origin + "/attendance-app/session/responses.html?event=" + encodeURIComponent(eventCode);
+  const baseUrl = window.location.origin + "/attendance-app-course/session/form.html?event=" + encodeURIComponent(eventCode);
+  const responseUrl = window.location.origin + "/attendance-app-course/session/responses.html?event=" + encodeURIComponent(eventCode);
 
   for (let day = 1; day <= numDays; day++) {
     for (let session = 1; session <= sessionsPerDay; session++) {

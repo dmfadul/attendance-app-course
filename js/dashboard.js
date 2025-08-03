@@ -32,7 +32,7 @@ function renderConfigLinks(configs) {
     return;
   }
 
-  const baseUrl = window.location.origin + "/attendance-app/session/control.html";
+  const baseUrl = window.location.origin + "/attendance-app-course/session/control.html";
 
   configs.forEach(config => {
     const li = document.createElement("li");

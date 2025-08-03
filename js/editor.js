@@ -12,7 +12,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const linksList = document.getElementById("generated-links");
     linksList.innerHTML = ""; // Clear previous
   
-    const baseUrl = window.location.origin + "/attendance-app/session/form.html";
+    const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
     for (let day = 1; day <= numDays; day++) {
       for (let session = 1; session <= sessionsPerDay; session++) {
