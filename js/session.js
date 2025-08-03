@@ -37,6 +37,16 @@ async function loadConfig(eventCode) {
   return await res.json();
 }
 
+async function loadStudents() {
+  const GIST_ID = 'be8732ad8a0fbdd966c3ff00f42a2aeb';
+  const filename = 'students.json';
+  const url = `https://gist.githubusercontent.com/dmfadul/${GIST_ID}/raw/${filename}`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to load config");
+  return await res.json();
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const turnoDict = {
     "slot1": "Manhã",
@@ -53,6 +63,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const config = await loadConfig(event);
+    const students = await loadStudents();
+    console.log("students:", students);
+    
     const eventName = config.eventName;
     title.innerHTML = `${eventName}<br>${dia} - ${turnoDict[turno]}`;
     populateNamesDropdown(config.participants);
