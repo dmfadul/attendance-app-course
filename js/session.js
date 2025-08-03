@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { event, session } = getQueryParams();
   const [ day, turno ] = session.split("-");
   const dia = day.replace("day", "dia ");
+  console.log("Event:", event, "Session:", session);
 
   const title = document.getElementById("form-title");
 
