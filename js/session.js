@@ -96,10 +96,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("checkin-form").addEventListener("submit", function (e) {
     e.preventDefault();
     
+    const classCode = document.getElementById("class-select").value;
     const participant = document.getElementById("name-select").value;
-    const email = document.getElementById("email-input").value;
-    const cargo = document.getElementById("function-select").value;
-
 
     if (!navigator.geolocation) {
       showStatus("Geolocation not supported.", false);
@@ -109,9 +107,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
       const record = {
+        class: classCode,
         name: participant,
-        email: email,
-        cargo: cargo,
         timestamp: new Date().toISOString(),
         location: { lat: latitude, lng: longitude },
         event,
