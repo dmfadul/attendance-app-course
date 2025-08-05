@@ -2,7 +2,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     e.preventDefault();
   
     const eventName = document.getElementById("event-name").value.trim();
-    const eventCode = document.getElementById("event-code").value.trim();
+    const discCode = document.getElementById("event-code").value.trim();
     const eventDate = document.getElementById("class-date").value.trim();
     const eventPeriod = document.getElementById("class-period").value.trim();
     const turmaOptions = document.getElementById("turmas-select").selectedOptions;
@@ -11,10 +11,11 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const linksList = document.getElementById("generated-links");
     linksList.innerHTML = ""; // Clear previous
   
+    const eventCode = discCode + "-" + eventDate + "-" + eventPeriod;
     const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
     const sessionId = `${eventDate}-${eventPeriod}`;
-    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}&session=${encodeURIComponent(sessionId)}`;
+    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}`;
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.href = fullUrl;
@@ -26,7 +27,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
   
     // Optionally export config or store locally
     const config = {      
-      eventCode,
+      discCode,
       eventName,
       eventDate,
       eventPeriod,
