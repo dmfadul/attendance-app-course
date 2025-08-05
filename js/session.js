@@ -71,14 +71,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     "evening": "Noite"
   }
 
-  const { event, session } = getQueryParams();
-  const [ dia, turno ] = session.split("-");
+  const event = getQueryParams();
+  console.log("Query params:", event);
 
-  console.log("Event:", event, "dia:", dia, "turno:", turno);
+  // const [ dia, turno ] = session.split("-");
+
+  // console.log("Event:", event, "dia:", dia, "turno:", turno);
   const title = document.getElementById("form-title");
 
   try {
     const config = await loadConfig(event);
+    console.log("Loaded config:", config);
     const students = await loadStudents();
     console.log("students:", students);
 
