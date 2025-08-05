@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
     
     const selectedTurmas = config.selectedTurmas || [];
-    if (selectedTurmas == "ALL") {
+    if (selectedTurmas.includes("ALL")){
       populateClassDropdown(students);
     } else {
       const filteredStudents = Object.fromEntries(
@@ -112,10 +112,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         timestamp: new Date().toISOString(),
         location: { lat: latitude, lng: longitude },
         event,
-        session
       };
       
-      const key = `attendance-${event}-${session}`;
+      const key = `attendance-${event}`;
       const prevData = JSON.parse(localStorage.getItem(key) || "[]");
       prevData.push(record);
       const newData = JSON.stringify(prevData, null, 2);
@@ -127,7 +126,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           eventCode: event,
-          sessionCode: session,
           data: record
         })
       })
