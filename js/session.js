@@ -1,13 +1,5 @@
 console.log("session.js loaded");
 
-function getQueryParams() {
-  const params = new URLSearchParams(window.location.search);
-  return {
-    event: params.get('event'),
-    session: params.get('session')
-  };
-}
-
 function populateClassDropdown(students) {
   const classSelect = document.getElementById("class-select");
   const nameSelect = document.getElementById("name-select");
@@ -70,8 +62,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     "afternoon": "Tarde",
     "evening": "Noite"
   }
-
-  const event = getQueryParams();
+  
+  const params = new URLSearchParams(window.location.search);
+  const event = params.get('event');
+  
   console.log("Query params:", event);
 
   // const [ dia, turno ] = session.split("-");
