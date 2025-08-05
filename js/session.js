@@ -1,5 +1,7 @@
 console.log("session.js loaded");
 
+let session = null;
+
 function populateClassDropdown(students) {
   const classSelect = document.getElementById("class-select");
   const nameSelect = document.getElementById("name-select");
@@ -78,6 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
     
     const selectedTurmas = config.selectedTurmas || [];
+    let session = selectedTurmas.join("||");
     if (selectedTurmas.includes("ALL")){
       populateClassDropdown(students);
     } else {
@@ -126,6 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           eventCode: event,
+          sessionCode: session,
           data: record
         })
       })
