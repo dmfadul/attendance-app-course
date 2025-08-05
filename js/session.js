@@ -66,16 +66,15 @@ async function loadStudents() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const turnoDict = {
-    "slot1": "Manhã",
-    "slot2": "Tarde",
-    "slot3": "Noite"
+    "morning": "Manhã",
+    "afternoon": "Tarde",
+    "evening": "Noite"
   }
 
   const { event, session } = getQueryParams();
-  const [ day, turno ] = session.split("-");
-  const dia = day.replace("day", "dia ");
-  console.log("Event:", event, "Session:", session);
+  const [ dia, turno ] = session.split("-");
 
+  console.log("Event:", event, "dia:", dia, "turno:", turno);
   const title = document.getElementById("form-title");
 
   try {

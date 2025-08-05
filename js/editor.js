@@ -13,7 +13,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
   
     const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
-    const sessionId = `day${eventDate}-slot${eventPeriod}`;
+    const sessionId = `${eventDate}-${eventPeriod}`;
     const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}&session=${encodeURIComponent(sessionId)}`;
     const li = document.createElement("li");
     const a = document.createElement("a");
