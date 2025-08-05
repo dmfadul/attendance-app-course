@@ -1,4 +1,4 @@
-console.log("JS file loaded 2");
+console.log("session.js loaded");
 
 function getQueryParams() {
   const params = new URLSearchParams(window.location.search);
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("students:", students);
 
     const eventName = config.eventName;
-    title.innerHTML = `${eventName}<br>${dia} - ${turnoDict[turno]}`;
+    title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
     populateClassDropdown(students);
   } catch (err) {
     showStatus("Configuration not found or failed to load.", false);
