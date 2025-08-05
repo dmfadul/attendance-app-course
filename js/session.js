@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
     
     const selectedTurmas = config.selectedTurmas || [];
-    let session = selectedTurmas.join("||");
+    session = selectedTurmas.join("||");
+    
     if (selectedTurmas.includes("ALL")){
       populateClassDropdown(students);
     } else {
