@@ -65,21 +65,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   const params = new URLSearchParams(window.location.search);
   const event = params.get('event');
-  
-  console.log("Query params:", event);
 
-  // const [ dia, turno ] = session.split("-");
-
-  // console.log("Event:", event, "dia:", dia, "turno:", turno);
   const title = document.getElementById("form-title");
 
   try {
     const config = await loadConfig(event);
-    console.log("Loaded config:", config);
     const students = await loadStudents();
-    console.log("students:", students);
 
     const eventName = config.eventName;
+    const dia = config.eventDate;
+    const turno = turnoDict[config.eventPeriod] || config.eventPeriod;
+    
     title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
     populateClassDropdown(students);
   } catch (err) {
