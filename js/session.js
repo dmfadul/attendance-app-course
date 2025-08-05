@@ -75,9 +75,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventName = config.eventName;
     const dia = config.eventDate;
     const turno = turnoDict[config.eventPeriod] || config.eventPeriod;
-    
     title.innerHTML = `${eventName}<br>${dia} - ${turno}`;
-    populateClassDropdown(students);
+    
+    const selectedTurmas = config.selectedTurmas || [];
+    if (selectedTurmas == "ALL") {
+      populateClassDropdown(students);
+    } else {
+      const filteredStudents = Object.fromEntries(
+        Object.entries(students).filter(([key]) => selectedTurmas.includes(key))
+      );
+      populateClassDropdown(filteredStudents);
+    }
   } catch (err) {
     showStatus("Configuration not found or failed to load.", false);
     document.getElementById("checkin-form").style.display = "none";
