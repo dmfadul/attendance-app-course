@@ -159,9 +159,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   const fullTurno = turnoDict[turno] || turno;
 
 
-
-  // const missingParticipants = participants.filter(p => !respondents.includes(p));
-  
-  // renderResponses(fileContent);
-  // renderMissingParticipants(missingParticipants);
 });
