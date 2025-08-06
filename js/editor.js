@@ -16,7 +16,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
     const sessionId = `${eventDate}-${eventPeriod}`;
-    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}&session=${encodeURIComponent(session)}`;
+    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}`;
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.href = fullUrl;
