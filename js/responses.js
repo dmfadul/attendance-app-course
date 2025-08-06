@@ -20,6 +20,8 @@ async function loadResponses() {
     let event = params.get('event');
     
     const targetFileName = `${event}.json`;
+    console.log("Loading responses from file:", targetFileName);
+    console.log("Available files in gist:", Object.keys(files));
     const file = files[targetFileName];
 
     if (file) {
