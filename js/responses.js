@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const fileContent = await loadResponses();
   const allStudents = await loadStudents();
   
-  console.log("Turmas selecionadas:", selectedTurmas);
   // Filter students dict to keep only selected turmas
   let filteredStudents;
 
@@ -144,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const respondents = Object.values(fileContent).map(r => r.name);
   
 
-  console.log("filtered students:", filteredStudents);
+  console.log("groupedResponses:", groupedResponses);
 
   // const missingParticipants = participants.filter(p => !respondents.includes(p));
   
