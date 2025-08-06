@@ -12,7 +12,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const linksList = document.getElementById("generated-links");
     linksList.innerHTML = ""; // Clear previous
   
-    const eventCode = discCode + "-" + eventDate + "-" + eventPeriod;
+    const eventCode = discCode + "-" + eventDate + "-" + eventPeriod + "-" + session;
     const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
     const sessionId = `${eventDate}-${eventPeriod}`;
