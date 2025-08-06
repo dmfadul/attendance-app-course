@@ -7,6 +7,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const eventPeriod = document.getElementById("class-period").value.trim();
     const turmaOptions = document.getElementById("turmas-select").selectedOptions;
     const selectedTurmas = Array.from(turmaOptions).map(opt => opt.value);
+    const session = selectedTurmas.join("||");
    
     const linksList = document.getElementById("generated-links");
     linksList.innerHTML = ""; // Clear previous
@@ -15,11 +16,11 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const baseUrl = window.location.origin + "/attendance-app-course/session/form.html";
   
     const sessionId = `${eventDate}-${eventPeriod}`;
-    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}`;
+    const fullUrl = `${baseUrl}?event=${encodeURIComponent(eventCode)}&session=${encodeURIComponent(session)}`;
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.href = fullUrl;
-    a.textContent = `Session: ${eventName} - ${sessionId}`;
+    a.textContent = `Aula: ${eventName} - ${sessionId}`;
     a.target = "_blank";
     li.appendChild(a);
     linksList.appendChild(li);

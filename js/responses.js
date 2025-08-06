@@ -16,7 +16,8 @@ async function loadResponses() {
     const data = await res.json();
     const files = data.files;
 
-    let { event, session } = getQueryParams();
+    const params = new URLSearchParams(window.location.search);
+    let event = params.get('event');
     
     const targetFileName = `${event}-${session}.json`;
     const file = files[targetFileName];
