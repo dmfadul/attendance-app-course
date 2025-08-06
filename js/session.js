@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   const params = new URLSearchParams(window.location.search);
   const event = params.get('event');
-  const session = params.get('session');
+  console.log("Event code:", event);
 
   const title = document.getElementById("form-title");
 
