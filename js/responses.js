@@ -46,73 +46,6 @@ async function loadStudents() {
   return await res.json();
 }
 
-function renderResponses(fileContent) {
-  const turnoDict = {
-    "morning": "Manhã",
-    "afternoon": "Tarde",
-    "evening": "Noite"
-  }
-  
-  const h1 = document.getElementById("form-title");
-  
-  const { event, session } = getQueryParams();
-  const [ day, turno ] = session.split("-");
-  const dia = day.replace("day", "dia ");
-
-  h1.innerHTML = `Respostas: ${event}<br>${dia} - ${turnoDict[turno]}`;
-  
-  const tableBody = document.querySelector("#responses tbody");
-  tableBody.innerHTML = "";
-
-  const respondents = fileContent.filter(r => typeof r.name === 'string');
-
-  respondents.sort((a, b) => a.name.localeCompare(b.name));
-
-  let lastRespondentName = null;
-  respondents.forEach((response, index) => {
-      if (response.name === lastRespondentName) {
-          return; // Skip duplicate names
-      } else {
-          lastRespondentName = response.name;
-      }
-      const { location, timestamp } = response;
-
-      const row = document.createElement("tr");
-
-      const idxCell = document.createElement("td");
-      idxCell.textContent = String(index + 1).padStart(2, '0');
-      row.appendChild(idxCell);
-
-      const nameCell = document.createElement("td");
-      nameCell.textContent = response.name;
-      row.appendChild(nameCell);
-
-      const locationCell = document.createElement("td");
-      locationCell.textContent = location ? `${location.lat.toFixed(6)}, ${location.lng.toFixed(6)}` : "N/A";
-      row.appendChild(locationCell);
-
-      const timestampCell = document.createElement("td");
-      const date = new Date(timestamp);
-      timestampCell.textContent = isNaN(date.getTime()) ? "Invalid date" : date.toLocaleString("pt-BR");
-      row.appendChild(timestampCell);
-
-      tableBody.appendChild(row);
-  });
-}
-
-function renderMissingParticipants(missingParticipantsRaw) {
-  const list = document.getElementById("missing-participants");
-  list.innerHTML = "";
-  
-  const missingParticipants = [...new Set(missingParticipantsRaw.filter(p => typeof p === 'string'))].sort();
-  missingParticipants.forEach((p) => {
-      const li = document.createElement("li");
-      li.className = "list-group-item";
-      li.textContent = p;
-      list.appendChild(li);
-  });
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const event = params.get('event');
@@ -160,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
  // Title
   const h1 = document.getElementById("form-title");
-  h1.innerHTML = `Respostas: ${event}<br>${date} - ${fullTurno}`;
+  h1.innerHTML = `${event}`;
 
   // Render responses & missing by turma
   for (const turma of selectedTurmas) {
