@@ -116,7 +116,7 @@ function renderMissingParticipants(missingParticipantsRaw) {
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const event = params.get('event');
-  const selectedTurmas = event.split("-")[3].split("+");
+  const selectedTurmas = event.split("-")[5].split("+");
   
   const fileContent = await loadResponses();
   const allStudents = await loadStudents();
