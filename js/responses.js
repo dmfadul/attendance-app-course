@@ -121,10 +121,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   const fileContent = await loadResponses();
   const allStudents = await loadStudents();
   
+  console.log("Turmas selecionadas:", selectedTurmas);
   // Filter students dict to keep only selected turmas
-  const filteredStudents = Object.fromEntries(
-    Object.entries(allStudents).filter(([key]) => selectedTurmas.includes(key))
-  );
+  let filteredStudents;
+
+  if (selectedTurmas.includes("ALL")) {
+    // Use all turmas
+    filteredStudents = allStudents;
+  } else {
+    // Use only selected turmas
+    filteredStudents = Object.fromEntries(
+      Object.entries(allStudents).filter(([key]) => selectedTurmas.includes(key))
+    );
+  }
+  
+  // Group responses by class (turma)
+  const groupedResponses = {};
+  for (const turma of selectedTurmas) {
+    groupedResponses[turma] = fileContent.filter(r => r.class === turma);
+  }
   
   const respondents = Object.values(fileContent).map(r => r.name);
   
