@@ -7,7 +7,7 @@ document.getElementById("editor-form").addEventListener("submit", function (e) {
     const eventPeriod = document.getElementById("class-period").value.trim();
     const turmaOptions = document.getElementById("turmas-select").selectedOptions;
     const selectedTurmas = Array.from(turmaOptions).map(opt => opt.value);
-    const session = selectedTurmas.join("||");
+    const session = selectedTurmas.join("+");
    
     const linksList = document.getElementById("generated-links");
     linksList.innerHTML = ""; // Clear previous
