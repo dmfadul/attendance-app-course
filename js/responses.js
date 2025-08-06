@@ -37,30 +37,14 @@ async function loadResponses() {
   }
 }
 
-async function loadParticipants() {
+async function loadStudents() {
   const GIST_ID = 'be8732ad8a0fbdd966c3ff00f42a2aeb';
+  const filename = 'students.json';
+  const url = `https://gist.githubusercontent.com/dmfadul/${GIST_ID}/raw/${filename}`;
 
-  try {
-    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`);
-    const data = await res.json();
-    const files = data.files;
-
-    const { event, session } = getQueryParams();
-    
-    const filename = `${event}-config.json`;
-    const file = files[filename];
-
-    if (file) {
-        const configContent = JSON.parse(file.content);
-        return configContent.participants;
-      } else {
-        console.error(`File ${targetFileName} not found in gist.`);
-        return [];
-      }
-  } catch (err) {
-    console.error("Error loading configs:", err);
-    return [];
-  }
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to load config");
+  return await res.json();
 }
 
 function renderResponses(fileContent) {
@@ -132,8 +116,8 @@ function renderMissingParticipants(missingParticipantsRaw) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const fileContent = await loadResponses();
-  const participants = await loadParticipants();
-  console.log("Loaded participants:", participants);
+  const participants = await loadStudents();
+  console.log("Loaded students:", participants);
   console.log("Loaded responses:", fileContent);
   
   // const respondents = Object.values(fileContent).map(r => r.name);
