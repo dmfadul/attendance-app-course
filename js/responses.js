@@ -140,10 +140,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     groupedResponses[turma] = fileContent.filter(r => r.class === turma);
   }
   
-  const respondents = Object.values(fileContent).map(r => r.name);
-  
+  const container = document.getElementById("responses-container");
+  container.innerHTML = ""; // Clear previous
 
-  console.log("groupedResponses:", groupedResponses);
+  const turnoDict = {
+    morning: "Manhã",
+    afternoon: "Tarde",
+    evening: "Noite"
+  };
+
+  const day = event.split("-")[1]
+  const month = event.split("-")[2];
+  const year = event.split("-")[3];
+  const date = new Date(year, month - 1, day);
+  console.log("Date:", date);
+
+  const turno = event.split("-")[6];
+  const fullTurno = turnoDict[turno] || turno;
+
+
 
   // const missingParticipants = participants.filter(p => !respondents.includes(p));
   
