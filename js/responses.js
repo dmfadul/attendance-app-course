@@ -19,7 +19,7 @@ async function loadResponses() {
     const params = new URLSearchParams(window.location.search);
     let event = params.get('event');
     
-    const targetFileName = `${event}-${session}.json`;
+    const targetFileName = `${event}.json`;
     const file = files[targetFileName];
 
     if (file) {
@@ -63,9 +63,9 @@ async function loadParticipants() {
 
 function renderResponses(fileContent) {
   const turnoDict = {
-    "slot1": "Manhã",
-    "slot2": "Tarde",
-    "slot3": "Noite"
+    "morning": "Manhã",
+    "afternoon": "Tarde",
+    "evening": "Noite"
   }
   
   const h1 = document.getElementById("form-title");
@@ -131,10 +131,12 @@ function renderMissingParticipants(missingParticipantsRaw) {
 document.addEventListener("DOMContentLoaded", async () => {
   const fileContent = await loadResponses();
   const participants = await loadParticipants();
+  console.log("Loaded participants:", participants);
+  console.log("Loaded responses:", fileContent);
   
-  const respondents = Object.values(fileContent).map(r => r.name);
-  const missingParticipants = participants.filter(p => !respondents.includes(p));
+  // const respondents = Object.values(fileContent).map(r => r.name);
+  // const missingParticipants = participants.filter(p => !respondents.includes(p));
   
-  renderResponses(fileContent);
-  renderMissingParticipants(missingParticipants);
+  // renderResponses(fileContent);
+  // renderMissingParticipants(missingParticipants);
 });
