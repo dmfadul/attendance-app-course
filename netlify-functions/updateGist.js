@@ -15,10 +15,10 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const { eventCode, sessionCode, data } = JSON.parse(event.body);
+    const { eventCode, data } = JSON.parse(event.body);
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const GIST_ID = process.env.GIST_ID;
-    const filename = `${eventCode}-${sessionCode}.json`;
+    const filename = `${eventCode}.json`;
 
     // Step 1: Get current Gist content
     const gistRes = await fetch(`https://api.github.com/gists/${GIST_ID}`, {

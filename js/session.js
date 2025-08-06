@@ -131,7 +131,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           eventCode: event,
-          sessionCode: session,
           data: record
         })
       })
