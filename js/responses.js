@@ -21,7 +21,6 @@ async function loadResponses() {
     
     const targetFileName = `${event}.json`;
     console.log("Loading responses from file:", targetFileName);
-    console.log("Available files in gist:", Object.keys(files));
     const file = files[targetFileName];
 
     if (file) {
@@ -115,19 +114,22 @@ function renderMissingParticipants(missingParticipantsRaw) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const fileContent = await loadResponses();
-  const respondents = Object.values(fileContent).map(r => r.name);
-  
-  const students = await loadStudents();
-
   const params = new URLSearchParams(window.location.search);
   const event = params.get('event');
   const selectedTurmas = event.split("-")[3].split("+");
+  
+  const fileContent = await loadResponses();
+  const allStudents = await loadStudents();
+  
+  // Filter students dict to keep only selected turmas
+  const filteredStudents = Object.fromEntries(
+    Object.entries(allStudents).filter(([key]) => selectedTurmas.includes(key))
+  );
+  
+  const respondents = Object.values(fileContent).map(r => r.name);
+  
 
-
-  console.log("Respondents:", respondents);
-  console.log("Participants:", students);
-  console.log("turmas:", selectedTurmas);
+  console.log("filtered students:", filteredStudents);
 
   // const missingParticipants = participants.filter(p => !respondents.includes(p));
   
